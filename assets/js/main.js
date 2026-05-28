@@ -75,7 +75,7 @@ function renderDots() {
 
 function openModal(i) {
   const a = apps[i];
-  const apkFile = a.id === 'mechup' ? 'mechup.apk' : 'scissors.apk';
+  const apkFile = a.id === 'mechup' ? 'MechUp.apk' : 'Scissors.apk';
   const apkName = a.id === 'mechup' ? 'MechUp.apk' : 'Scissors.apk';
   document.getElementById('mInfo').innerHTML = `<div class="m-name">${a.name}</div><div class="m-cat">${a.cat}</div><p class="m-desc">${a.desc}</p><div class="m-feats">${a.feats.map(f => `<div class="m-feat">${f}</div>`).join('')}</div><a href="assets/apk/${apkFile}" download="${apkName}" class="m-dl">Quero esse app →</a>`;
   document.getElementById('mVisual').innerHTML = `<div class="m-phone">${getScr(a.id)}</div>`;

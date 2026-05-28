@@ -252,3 +252,53 @@ footer{border-top:1px solid rgba(212,175,55,0.08);padding:2.5rem 4rem;display:fl
 .hero-left>*:nth-child(3){animation-delay:.34s}
 .hero-left>*:nth-child(4){animation-delay:.46s}
 .hero-left>*:nth-child(5){animation-delay:.58s}
+
+/* ============================================================
+   Responsive — Mobile (max-width: 768px)
+   ============================================================ */
+@media (max-width:768px){
+
+  /* Nav */
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .logo img{width:44px;height:44px}
+  .logo span{font-size:14px!important}
+
+  /* Hero */
+  .hero{flex-direction:column;padding:6rem 1.5rem 3rem;align-items:flex-start}
+  .hero-watermark{display:none}
+  .hero-left{max-width:100%}
+  .hero h1{font-size:2rem}
+  .hero-right{display:none}
+
+  /* Sections */
+  .section{padding:3rem 1.5rem}
+  .tp-grid{grid-template-columns:1fr}
+  .cards-row{grid-template-columns:1fr}
+  .feat-card:first-child{border-radius:12px 12px 0 0}
+  .feat-card:last-child{border-radius:0 0 12px 12px}
+  .feat-card.hi{transform:none;margin:0}
+  .tp2-grid{grid-template-columns:1fr}
+
+  /* Slider */
+  .slider-wrap{height:520px}
+  .app-card{width:220px}
+  .app-card.prev{transform:translateX(-240px) scale(0.75)}
+  .app-card.next{transform:translateX(240px) scale(0.75)}
+
+  /* Modal */
+  .modal{grid-template-columns:1fr}
+  .m-visual{display:none}
+  .m-info{padding:2rem 1.5rem;border-right:none}
+
+  /* Services page */
+  .app-grid{grid-template-columns:1fr}
+  .coming-banner{flex-direction:column;gap:1rem}
+
+  /* Footer */
+  footer{flex-direction:column;text-align:center;gap:1rem;padding:2rem 1.5rem}
+  .fl{justify-content:center}
+
+  /* Novidades hero */
+  .sv-hero{padding:7rem 1.5rem 2.5rem}
+}
