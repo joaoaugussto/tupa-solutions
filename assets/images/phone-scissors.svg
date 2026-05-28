@@ -1,0 +1,39 @@
+<svg viewBox="0 0 190 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+  <rect width="190" height="400" fill="#0B0906"/><rect width="190" height="50" fill="#110D08"/>
+  <text x="14" y="20" fill="#6a5830" font-size="8" font-family="Outfit,sans-serif">9:41</text>
+  <text x="14" y="36" fill="#e8dba8" font-size="10" font-family="Cinzel,serif" font-weight="600">Scissors Barber</text>
+  <rect x="10" y="58" width="170" height="62" rx="10" fill="#161209"/>
+  <rect x="10" y="58" width="170" height="62" rx="10" stroke="#D4AF37" stroke-width="0.5" stroke-opacity="0.28"/>
+  <text x="18" y="74" fill="#6a5830" font-size="7" font-family="Outfit,sans-serif" letter-spacing="1">PRÓXIMO AGENDAMENTO</text>
+  <text x="18" y="90" fill="#e8dba8" font-size="11" font-family="Outfit,sans-serif" font-weight="600">Carlos Mendes</text>
+  <text x="18" y="104" fill="#6a5830" font-size="8" font-family="Outfit,sans-serif">Corte + Barba · André</text>
+  <rect x="114" y="78" width="58" height="22" rx="5" fill="#D4AF37" opacity="0.12"/>
+  <text x="143" y="94" text-anchor="middle" fill="#D4AF37" font-size="11" font-family="Cinzel,serif" font-weight="700">14:30</text>
+  <rect x="10" y="130" width="52" height="50" rx="8" fill="#161209"/>
+  <text x="36" y="152" text-anchor="middle" fill="#D4AF37" font-size="16" font-family="Cinzel,serif" font-weight="700">8</text>
+  <text x="36" y="168" text-anchor="middle" fill="#6a5830" font-size="7">Hoje</text>
+  <rect x="70" y="130" width="52" height="50" rx="8" fill="#161209"/>
+  <text x="96" y="150" text-anchor="middle" fill="#D4AF37" font-size="10" font-family="Cinzel,serif" font-weight="700">R$640</text>
+  <text x="96" y="168" text-anchor="middle" fill="#6a5830" font-size="7">Faturamento</text>
+  <rect x="130" y="130" width="50" height="50" rx="8" fill="#161209"/>
+  <text x="155" y="152" text-anchor="middle" fill="#D4AF37" font-size="16" font-family="Cinzel,serif" font-weight="700">4.9</text>
+  <text x="155" y="168" text-anchor="middle" fill="#6a5830" font-size="7">Avaliação</text>
+  <text x="14" y="200" fill="#6a5830" font-size="8" font-family="Outfit,sans-serif" letter-spacing="1">AGENDA DO DIA</text>
+  <rect x="10" y="210" width="170" height="44" rx="7" fill="#161209"/>
+  <rect x="16" y="220" width="2.5" height="24" rx="1.25" fill="#D4AF37"/>
+  <text x="26" y="232" fill="#e8dba8" font-size="9" font-family="Outfit,sans-serif" font-weight="600">Pedro Silva</text>
+  <text x="26" y="246" fill="#6a5830" font-size="8">Corte degradê · 11:00</text>
+  <rect x="10" y="262" width="170" height="44" rx="7" fill="#161209"/>
+  <rect x="16" y="272" width="2.5" height="24" rx="1.25" fill="#C75B12"/>
+  <text x="26" y="284" fill="#e8dba8" font-size="9" font-family="Outfit,sans-serif" font-weight="600">Rafael Costa</text>
+  <text x="26" y="298" fill="#6a5830" font-size="8">Barba completa · 12:30</text>
+  <rect x="10" y="314" width="170" height="44" rx="7" fill="#161209"/>
+  <rect x="16" y="324" width="2.5" height="24" rx="1.25" fill="#D4AF37" opacity="0.4"/>
+  <text x="26" y="336" fill="#e8dba8" font-size="9" font-family="Outfit,sans-serif" font-weight="600">Marco Antônio</text>
+  <text x="26" y="350" fill="#6a5830" font-size="8">Corte + Barba · 14:30</text>
+  <rect x="0" y="366" width="190" height="34" fill="#110D08"/>
+  <text x="24" y="388" text-anchor="middle" fill="#D4AF37" font-size="8">Início</text>
+  <text x="66" y="388" text-anchor="middle" fill="#4a3820" font-size="8">Agenda</text>
+  <text x="110" y="388" text-anchor="middle" fill="#4a3820" font-size="8">Clientes</text>
+  <text x="160" y="388" text-anchor="middle" fill="#4a3820" font-size="8">Mais</text>
+</svg>

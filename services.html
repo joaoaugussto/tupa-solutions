@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apps — Tupã Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="bg-fixed" style="background-image:url('assets/images/bg-pattern.png')"></div>
+<div class="bg-overlay"></div>
+
+<nav>
+  <div class="logo" style="gap:10px">
+    <img src="assets/images/logo.png" alt="Tupã Solutions" style="width:58px;height:58px;object-fit:contain;filter:drop-shadow(0 0 4px rgba(212,175,55,0.25))" />
+    <span style="font-family:Cinzel,serif;font-size:17px;font-weight:700;color:#D4AF37;letter-spacing:0.07em;white-space:nowrap">Tupã Solutions</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="services.html" class="active">Apps</a></li>
+    <li><a href="novidades.html">Novidades</a></li>
+  </ul>
+  <a href="https://wa.me/5517996433083" target="_blank" class="nav-cta">Contato</a>
+</nav>
+
+<section class="sv-hero">
+  <div class="sv-hero-inner">
+    <div class="sv-badge">Nossos Apps</div>
+    <h1>Escolha a solução <span class="sv-accent">certa</span><br>para o seu <span class="sv-gold">negócio</span></h1>
+    <p class="sv-sub">Cada app foi desenvolvido para resolver um problema real. Escolha o seu e comece a usar hoje.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:1rem">
+  <div class="app-grid">
+
+    <div class="app-card-full">
+      <div class="app-avail-badge">● Disponível</div>
+      <img class="app-logo" src="assets/images/logo-mechup.png" alt="MechUp">
+      <div class="app-tag app-tag--purple">Gestão de Oficinas</div>
+      <h2 class="app-name">MechUp</h2>
+      <p class="app-desc">Sistema completo para mecânicas e oficinas. Controle OS, clientes, veículos e financeiro em tempo real.</p>
+      <ul class="app-feats">
+        <li>Ordens de serviço completas</li>
+        <li>Controle financeiro com caixa</li>
+        <li>Cadastro de clientes e veículos</li>
+        <li>Dashboard com visão do dia</li>
+      </ul>
+      <div class="app-btns">
+        <button id="btn-mechup" class="btn-app-primary btn-app-primary--purple">Quero o MechUp</button>
+        <button class="btn-app-secondary" onclick="openModal(0)">Ver detalhes</button>
+      </div>
+    </div>
+
+    <div class="app-card-full">
+      <div class="app-avail-badge">● Disponível</div>
+      <img class="app-logo" src="assets/images/logo-scissors.png" alt="Scissors">
+      <div class="app-tag app-tag--gold">Gestão de Barbearias</div>
+      <h2 class="app-name">Scissors</h2>
+      <p class="app-desc">Agendamento e gestão para barbearias premium. Clientes agendam online, você controla tudo pelo celular.</p>
+      <ul class="app-feats">
+        <li>Agendamento rápido e organizado</li>
+        <li>Controle de barbeiros e horários</li>
+        <li>Histórico completo de clientes</li>
+        <li>Gestão financeira do negócio</li>
+      </ul>
+      <div class="app-btns">
+        <button id="btn-scissors" class="btn-app-primary btn-app-primary--gold">Quero o Scissors</button>
+        <button class="btn-app-secondary" onclick="openModal(1)">Ver detalhes</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="coming-banner">
+    <p><strong>Mais apps chegando em breve</strong> — Estamos desenvolvendo soluções para novos setores. Deixe seu contato e avisamos quando lançar.</p>
+    <a href="#" class="btn-cta">Quero ser avisado →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">© 2025 Tupã Solutions. Todos os direitos reservados.</div>
+  <div class="fl"><a href="index.html">Início</a><a href="services.html">Apps</a><a href="#">Contato</a></div>
+</footer>
+
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <button class="m-close" id="mClose">✕</button>
+    <div class="m-info" id="mInfo"></div>
+    <div class="m-visual" id="mVisual"></div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+document.getElementById('btn-mechup').onclick = () => {
+  const a = document.createElement('a');
+  a.href = 'assets/apk/mechup.apk';
+  a.download = 'MechUp.apk';
+  a.click();
+};
+
+document.getElementById('btn-scissors').onclick = () => {
+  const a = document.createElement('a');
+  a.href = 'assets/apk/scissors.apk';
+  a.download = 'Scissors.apk';
+  a.click();
+};
+</script>
+</body>
+</html>
