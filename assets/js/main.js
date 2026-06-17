@@ -91,3 +91,154 @@ if (document.getElementById('sliderWrap')) {
   render();
   renderDots();
 }
+
+
+/* --- Apps Section --- */
+/* =====================================================
+   SEÇÃO DE APPS — TUPÃ SOLUTIONS
+   Adicionar ao main.js ou em <script> antes do </body>
+   ===================================================== */
+
+(function () {
+  const state = { mechup: false, estoque: false };
+
+  function appEnter(id) {
+    if (state[id]) return;
+    state[id] = true;
+
+    const phone = document.getElementById('phone-' + id);
+    if (phone) {
+      phone.classList.remove('go');
+      void phone.offsetWidth; // force reflow
+      phone.classList.add('go');
+    }
+
+    const text = document.getElementById('app-text-' + id);
+    if (text) {
+      text.classList.remove('reveal', 'hide');
+      void text.offsetWidth;
+      text.classList.add('reveal');
+    }
+  }
+
+  function appLeave(id) {
+    state[id] = false;
+
+    const phone = document.getElementById('phone-' + id);
+    if (phone) {
+      phone.classList.remove('go');
+      phone.style.cssText = 'transform:translateX(-600px);opacity:0;';
+      setTimeout(() => { phone.style.cssText = ''; }, 50);
+    }
+
+    const text = document.getElementById('app-text-' + id);
+    if (text) {
+      text.classList.remove('reveal');
+      text.classList.add('hide');
+      setTimeout(() => { text.classList.remove('hide'); }, 250);
+    }
+  }
+
+  // Expõe globalmente para os atributos onmouseenter/onmouseleave do HTML
+  window.appEnter = appEnter;
+  window.appLeave = appLeave;
+})();
+
+(function () {
+  const heroEls = document.querySelectorAll('.hero-animated');
+
+  function runHeroAnim() {
+    heroEls.forEach(el => {
+      el.classList.remove('hero-visible');
+      void el.offsetWidth;
+    });
+    heroEls.forEach(el => {
+      const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+      setTimeout(() => {
+        el.classList.add('hero-visible');
+      }, delay);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runHeroAnim);
+  } else {
+    runHeroAnim();
+  }
+})();
+
+(function () {
+  const track = document.getElementById('mechupTrack');
+  const dotsEl = document.getElementById('mechupDots');
+  const labelEl = document.getElementById('mechupLabel');
+
+  if (!track || !dotsEl || !labelEl) return;
+
+  const labels = [
+    'Dashboard',
+    'Ordens de Serviço',
+    'Clientes',
+    'Carros',
+    'Estoque',
+    'Financeiro',
+    'Adiantamentos',
+    'Lembretes'
+  ];
+
+  const total = labels.length;
+  let current = 0;
+  let timer;
+
+  labels.forEach(function (_, i) {
+    const d = document.createElement('div');
+    d.className = 'mechup-dot' + (i === 0 ? ' active' : '');
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    document.querySelectorAll('.mechup-dot').forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+    });
+    if (labelEl) labelEl.textContent = labels[current];
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      goTo(current + 1);
+    }, 2800);
+  }
+
+  setTimeout(function () {
+    startAuto();
+  }, 1500);
+})();
+
+(function () {
+  const scrollEls = document.querySelectorAll('.scroll-reveal');
+
+  if (!scrollEls.length) return;
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+          setTimeout(function () {
+            el.classList.add('is-visible');
+          }, delay);
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  scrollEls.forEach(function (el) {
+    observer.observe(el);
+  });
+})();
+
