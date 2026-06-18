@@ -1170,6 +1170,73 @@ footer{border-top:1px solid rgba(212,175,55,0.08);padding:2.5rem 4rem;display:fl
   display: none;
 }
 
+/* ── CARROSSEL ESTOQUEMAX ── */
+.estoque-carousel-viewport {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  overflow: hidden;
+  border-radius: 32px;
+  background: #0a0a0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.estoque-carousel-track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.estoque-slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.estoque-slide img {
+  width: 100%;
+  height: 96%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  background: #0a0a0f;
+  margin: 0 auto;
+}
+
+.estoque-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  z-index: 20;
+}
+
+.estoque-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.estoque-dot.active {
+  background: #fb923c;
+  transform: scaleX(2);
+  border-radius: 3px;
+}
+
 /* HERO RESPONSIVO */
 @media (max-width: 900px) {
   .hero-inner {

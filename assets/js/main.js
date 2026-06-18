@@ -217,6 +217,42 @@ if (document.getElementById('sliderWrap')) {
 })();
 
 (function () {
+  const track = document.getElementById('estoqueTrack');
+  const dotsEl = document.getElementById('estoqueDots');
+
+  if (!track || !dotsEl) return;
+
+  const total = 7;
+  let current = 0;
+  let timer;
+
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('div');
+    d.className = 'estoque-dot' + (i === 0 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    document.querySelectorAll('.estoque-dot').forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      goTo(current + 1);
+    }, 2800);
+  }
+
+  setTimeout(function () {
+    startAuto();
+  }, 1500);
+})();
+
+(function () {
   const scrollEls = document.querySelectorAll('.scroll-reveal');
 
   if (!scrollEls.length) return;
