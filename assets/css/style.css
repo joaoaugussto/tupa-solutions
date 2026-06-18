@@ -1152,6 +1152,7 @@ footer{border-top:1px solid rgba(212,175,55,0.08);padding:2.5rem 4rem;display:fl
   display: inline-flex; align-items: center; gap: 6px; background: #fff;
   padding: 0.6rem 1.5rem; border-radius: 8px; font-size: 0.875rem; font-weight: 700;
   text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+  border: none; cursor: pointer; font-family: 'Outfit', sans-serif;
 }
 .app-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 .app-cta-mechup  { color: #6d28d9; }
@@ -1205,4 +1206,152 @@ footer{border-top:1px solid rgba(212,175,55,0.08);padding:2.5rem 4rem;display:fl
   .app-block { min-height: auto; }
   .idle-name { font-size: 1.5rem; }
   .apps-header { padding: 2.5rem 1.5rem 1.5rem; }
+}
+
+/* ── POPUP DE SENHA APK ── */
+.apk-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.apk-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.apk-popup {
+  background: #111a11;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 20px;
+  padding: 2.5rem 2rem 2rem;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.apk-overlay.show .apk-popup {
+  transform: translateY(0);
+}
+
+.apk-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: none;
+  color: rgba(247, 245, 240, 0.5);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.apk-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.apk-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+.apk-icon-mechup  { background: rgba(124, 58, 237, 0.25); border: 1px solid rgba(124, 58, 237, 0.4); }
+.apk-icon-estoque { background: rgba(199, 91, 18, 0.25);  border: 1px solid rgba(199, 91, 18, 0.4); }
+
+.apk-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #F7F5F0;
+}
+
+.apk-desc {
+  font-size: 0.875rem;
+  color: rgba(247, 245, 240, 0.55);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.apk-input-row { width: 100%; }
+
+.apk-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: #F7F5F0;
+  font-size: 0.95rem;
+  font-family: 'Outfit', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+.apk-input:focus { border-color: rgba(212, 175, 55, 0.5); }
+.apk-input.error { border-color: rgba(248, 113, 113, 0.6); }
+
+.apk-error {
+  font-size: 0.8rem;
+  color: #f87171;
+  text-align: center;
+  display: none;
+}
+.apk-error.show { display: block; }
+
+.apk-btn {
+  width: 100%;
+  background: #D4AF37;
+  color: #1F3A12;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  margin-top: 0.25rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.apk-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.apk-btn:active { transform: translateY(0); }
+
+.apk-footer {
+  font-size: 0.78rem;
+  color: rgba(247, 245, 240, 0.35);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.apk-footer a { color: rgba(212, 175, 55, 0.7); text-decoration: none; }
+.apk-footer a:hover { color: #D4AF37; }
+
+@media (max-width: 440px) {
+  .apk-popup { margin: 1rem; max-width: calc(100% - 2rem); }
 }

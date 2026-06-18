@@ -54,9 +54,9 @@
           <li><span class="feat-check">&#10003;</span>Permissões por nível: admin, gerente e operador</li>
           <li><span class="feat-check">&#10003;</span>Web e mobile — disponível no Google Play</li>
         </ul>
-        <a href="https://wa.me/5517996433083" class="app-cta app-cta-mechup" target="_blank" rel="noopener">
+        <button class="app-cta app-cta-mechup" onclick="abrirPopup('mechup')">
           Quero o MechUp &#8594;
-        </a>
+        </button>
       </div>
       <div class="app-phone-side">
         <div class="app-phone-mover" id="phone-mechup">
@@ -111,9 +111,9 @@
           <li><span class="feat-check">&#10003;</span>Permissões por nível: admin, gerente e operador</li>
           <li><span class="feat-check">&#10003;</span>Relatórios exportáveis em PDF e Excel</li>
         </ul>
-        <a href="https://wa.me/5517996433083" class="app-cta app-cta-estoque" target="_blank" rel="noopener">
+        <button class="app-cta app-cta-estoque" onclick="abrirPopup('estoque')">
           Quero o EstoqueMax &#8594;
-        </a>
+        </button>
       </div>
       <div class="app-phone-side">
         <div class="app-phone-mover" id="phone-estoque">
@@ -154,6 +154,35 @@
     <button class="m-close" id="mClose">✕</button>
     <div class="m-info" id="mInfo"></div>
     <div class="m-visual" id="mVisual"></div>
+  </div>
+</div>
+
+<!-- POPUP DE SENHA PARA DOWNLOAD DO APK -->
+<div class="apk-overlay" id="apkOverlay" onclick="fecharPopup(event)">
+  <div class="apk-popup">
+    <button class="apk-close" onclick="fecharPopupDireto()">&#10005;</button>
+
+    <div class="apk-icon" id="apkIcon">&#8595;</div>
+    <div class="apk-title" id="apkTitle">Baixar app</div>
+    <p class="apk-desc">Digite a senha para baixar</p>
+
+    <div class="apk-input-row">
+      <input
+        type="password"
+        class="apk-input"
+        id="apkSenha"
+        placeholder="Senha de acesso"
+        onkeydown="if(event.key==='Enter') confirmarSenha()"
+      >
+    </div>
+
+    <div class="apk-error" id="apkError">Senha incorreta. Tente novamente.</div>
+
+    <button class="apk-btn" onclick="confirmarSenha()">Baixar</button>
+
+    <p class="apk-footer">
+      Ainda não tem acesso? <a href="https://wa.me/5517996433083" target="_blank" rel="noopener">Fale com a gente</a>
+    </p>
   </div>
 </div>
 

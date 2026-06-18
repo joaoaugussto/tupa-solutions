@@ -300,3 +300,85 @@ if (document.getElementById('sliderWrap')) {
   });
 })();
 
+(function () {
+  const SENHAS = {
+    mechup:  'TupãPasswordMechUp',
+    estoque: 'TupãPasswordEstoquemax'
+  };
+
+  const APKS = {
+    mechup:  'assets/apk/MechUp.apk',
+    estoque: 'assets/apk/estoquemax.apk'
+  };
+
+  const NOMES = {
+    mechup:  'MechUp',
+    estoque: 'EstoqueMax'
+  };
+
+  let appAtual = null;
+
+  function abrirPopup(app) {
+    appAtual = app;
+
+    const overlay  = document.getElementById('apkOverlay');
+    const icon     = document.getElementById('apkIcon');
+    const title    = document.getElementById('apkTitle');
+    const input    = document.getElementById('apkSenha');
+    const erro     = document.getElementById('apkError');
+
+    icon.className = 'apk-icon apk-icon-' + app;
+    icon.textContent = app === 'mechup' ? '⚙' : '📦';
+    title.textContent = 'Baixar ' + NOMES[app];
+
+    input.value = '';
+    input.classList.remove('error');
+    erro.classList.remove('show');
+
+    overlay.classList.add('show');
+    setTimeout(function () { input.focus(); }, 300);
+  }
+
+  function fecharPopup(event) {
+    if (event.target === document.getElementById('apkOverlay')) {
+      fecharPopupDireto();
+    }
+  }
+
+  function fecharPopupDireto() {
+    document.getElementById('apkOverlay').classList.remove('show');
+    appAtual = null;
+  }
+
+  function confirmarSenha() {
+    const input = document.getElementById('apkSenha');
+    const erro  = document.getElementById('apkError');
+    const senha = input.value;
+
+    if (!appAtual) return;
+
+    if (senha === SENHAS[appAtual]) {
+      const link = document.createElement('a');
+      link.href = APKS[appAtual];
+      link.download = NOMES[appAtual] + '.apk';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      setTimeout(fecharPopupDireto, 800);
+    } else {
+      input.classList.add('error');
+      erro.classList.add('show');
+      input.value = '';
+      setTimeout(function () {
+        input.classList.remove('error');
+      }, 1200);
+    }
+  }
+
+  window.abrirPopup = abrirPopup;
+  window.fecharPopup = fecharPopup;
+  window.fecharPopupDireto = fecharPopupDireto;
+  window.confirmarSenha = confirmarSenha;
+})();
+
