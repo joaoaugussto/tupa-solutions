@@ -253,6 +253,99 @@ if (document.getElementById('sliderWrap')) {
 })();
 
 (function () {
+  const mechupTrack = document.getElementById('heroMechupTrack');
+  const mechupDots = document.getElementById('heroMechupDots');
+  const estoqueTrack = document.getElementById('heroEstoqueTrack');
+  const estoqueDots = document.getElementById('heroEstoqueDots');
+  const slotA = document.getElementById('slotA');
+  const slotB = document.getElementById('slotB');
+  const splashA = document.getElementById('splashA');
+  const splashB = document.getElementById('splashB');
+
+  if (!mechupTrack || !estoqueTrack || !slotA || !slotB) return;
+
+  const SLIDE_TIME = 2800;
+  const SPLASH_TIME = 1600;
+
+  const mechupTotal = mechupTrack.children.length;
+  const estoqueTotal = estoqueTrack.children.length;
+
+  function buildDots(container, total, dotClass) {
+    container.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('div');
+      d.className = dotClass + (i === 0 ? ' active' : '');
+      container.appendChild(d);
+    }
+  }
+  buildDots(mechupDots, mechupTotal, 'mechup-dot');
+  buildDots(estoqueDots, estoqueTotal, 'estoque-dot');
+
+  const state = {
+    mechup: { idx: 0, total: mechupTotal, track: mechupTrack, dots: mechupDots, dotClass: 'mechup-dot', splash: splashA },
+    estoque: { idx: 0, total: estoqueTotal, track: estoqueTrack, dots: estoqueDots, dotClass: 'estoque-dot', splash: splashB }
+  };
+
+  function setSlide(appKey) {
+    const s = state[appKey];
+    s.track.style.transform = 'translateX(-' + (s.idx * 100) + '%)';
+    s.dots.querySelectorAll('.' + s.dotClass).forEach(function (d, i) {
+      d.classList.toggle('active', i === s.idx);
+    });
+  }
+
+  function showSplash(appKey) {
+    return new Promise(function (resolve) {
+      const s = state[appKey];
+      s.splash.classList.add('show');
+      setTimeout(function () {
+        s.splash.classList.remove('show');
+        resolve();
+      }, SPLASH_TIME);
+    });
+  }
+
+  function swapPositions() {
+    const aIsFront = slotA.classList.contains('slot-front');
+    if (aIsFront) {
+      slotA.classList.remove('slot-front');
+      slotA.classList.add('slot-back');
+      slotB.classList.remove('slot-back');
+      slotB.classList.add('slot-front');
+    } else {
+      slotA.classList.remove('slot-back');
+      slotA.classList.add('slot-front');
+      slotB.classList.remove('slot-front');
+      slotB.classList.add('slot-back');
+    }
+  }
+
+  function runCycle(appKey) {
+    const s = state[appKey];
+    s.idx = (s.idx + 1) % s.total;
+    setSlide(appKey);
+
+    if (s.idx === 0) {
+      showSplash(appKey).then(function () {
+        swapPositions();
+        scheduleNext(appKey);
+      });
+    } else {
+      scheduleNext(appKey);
+    }
+  }
+
+  function scheduleNext(appKey) {
+    setTimeout(function () {
+      runCycle(appKey);
+    }, SLIDE_TIME);
+  }
+
+  setTimeout(function () { scheduleNext('mechup'); }, SLIDE_TIME);
+  setTimeout(function () { scheduleNext('estoque'); }, SLIDE_TIME + 400);
+})();
+
+(function () {
   const scrollEls = document.querySelectorAll('.scroll-reveal');
 
   if (!scrollEls.length) return;

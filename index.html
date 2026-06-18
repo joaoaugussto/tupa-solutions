@@ -63,88 +63,57 @@
       </div>
     </div>
 
-    <div class="hero-phones">
+    <div class="dual-phone-stage" id="dualPhoneStage">
 
-      <!-- Celular de trás: Splash Tupã Solutions -->
-      <div class="hero-phone-wrap hero-phone-back hero-animated" data-delay="500">
-        <div class="hero-phone phone-tupa">
-          <div class="hero-phone-topbar topbar-gold"></div>
-          <div class="hero-phone-glare"></div>
-          <div class="hero-phone-notch notch-sm"></div>
-          <div class="tupa-splash">
-            <div class="tupa-logo-circle">
-              <div class="tupa-ring"></div>
-              <span class="tupa-bolt">&#9889;</span>
-            </div>
-            <div class="tupa-brand-text">
-              <div class="tupa-brand-name">Tupã Solutions</div>
-              <div class="tupa-brand-tagline">Tecnologia que trabalha</div>
-            </div>
-            <div class="tupa-dots">
-              <div class="tupa-dot td-1"></div>
-              <div class="tupa-dot td-2"></div>
-              <div class="tupa-dot td-3"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Celular da frente: MechUp -->
-      <div class="hero-phone-wrap hero-phone-front hero-animated" data-delay="680">
-        <div class="hero-phone phone-mechup-hero">
+      <div class="phone-slot slot-back" id="slotA" data-app="mechup">
+        <div class="hero-phone phone-mechup-hero" id="frameA">
           <div class="hero-phone-topbar topbar-purple"></div>
           <div class="hero-phone-glare"></div>
           <div class="hero-phone-btn-r"></div>
           <div class="hero-phone-btn-v1"></div>
           <div class="hero-phone-btn-v2"></div>
           <div class="hero-phone-notch notch-lg"></div>
-          <div class="hero-phone-screen">
-            <div class="hero-ph-header">
-              <div class="hero-ph-icon ph-icon-purple">&#9881;</div>
-              <div>
-                <div class="hero-ph-name ph-name-purple">MechUp</div>
-                <div class="hero-ph-sub">Olá, bem-vindo</div>
-              </div>
+
+          <div class="mechup-carousel-viewport">
+            <div class="mechup-carousel-track" id="heroMechupTrack">
+              <div class="mechup-slide"><img src="assets/images/MechUp/mechup-dashboard.jpeg" alt="Dashboard MechUp" loading="lazy"></div>
+              <div class="mechup-slide"><img src="assets/images/MechUp/mechup-ordens.jpeg" alt="Ordens MechUp" loading="lazy"></div>
+              <div class="mechup-slide"><img src="assets/images/MechUp/mechup-clientes.jpeg" alt="Clientes MechUp" loading="lazy"></div>
+              <div class="mechup-slide"><img src="assets/images/MechUp/mechup-carros.jpeg" alt="Carros MechUp" loading="lazy"></div>
+              <div class="mechup-slide"><img src="assets/images/MechUp/mechup-estoque.jpeg" alt="Estoque MechUp" loading="lazy"></div>
+              <div class="mechup-slide"><img src="assets/images/MechUp/mechup-financeiro.jpeg" alt="Financeiro MechUp" loading="lazy"></div>
+              <div class="mechup-slide"><img src="assets/images/MechUp/mechup-adiantamentos.jpeg" alt="Adiantamentos MechUp" loading="lazy"></div>
+              <div class="mechup-slide"><img src="assets/images/MechUp/mechup-lembretes.jpeg" alt="Lembretes MechUp" loading="lazy"></div>
             </div>
-            <div class="hero-ph-stats">
-              <div class="hero-ph-stat">
-                <div class="hero-stat-n">14</div>
-                <div class="hero-stat-l">OS abertas</div>
-              </div>
-              <div class="hero-ph-stat">
-                <div class="hero-stat-n" style="color:#4ade80;">R$9k</div>
-                <div class="hero-stat-l">Este mês</div>
-              </div>
+            <div class="mechup-dots" id="heroMechupDots"></div>
+
+            <div class="app-splash-overlay" id="splashA">
+              <img src="assets/images/MechUp/logo-mechup.png" alt="MechUp" class="app-splash-logo">
             </div>
-            <div class="hero-ph-card">
-              <div class="hero-ph-row">
-                <span class="hero-ph-cn">Civic · Ricardo</span>
-                <span class="hero-ph-badge badge-green">Concluído</span>
-              </div>
-              <div class="hero-ph-row" style="margin-top:2px;">
-                <span class="hero-ph-info">Troca de óleo · ABC-1234</span>
-                <span class="hero-ph-val val-green">R$320</span>
-              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-slot slot-front" id="slotB" data-app="estoque">
+        <div class="hero-phone phone-tupa" id="frameB" style="width:240px;height:480px;border-radius:38px;">
+          <div class="hero-phone-topbar topbar-gold" style="background:#C75B12;"></div>
+          <div class="hero-phone-glare"></div>
+          <div class="hero-phone-notch notch-lg"></div>
+
+          <div class="estoque-carousel-viewport">
+            <div class="estoque-carousel-track" id="heroEstoqueTrack">
+              <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-dashboard.jpeg" alt="Dashboard EstoqueMax" loading="lazy"></div>
+              <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-produtos.jpeg" alt="Produtos EstoqueMax" loading="lazy"></div>
+              <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-movimentacoes.jpeg" alt="Movimentacoes EstoqueMax" loading="lazy"></div>
+              <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-historico.jpeg" alt="Historico EstoqueMax" loading="lazy"></div>
+              <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-depositos.jpeg" alt="Depositos EstoqueMax" loading="lazy"></div>
+              <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-financeiro.jpeg" alt="Financeiro EstoqueMax" loading="lazy"></div>
+              <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-relatorios.jpeg" alt="Relatorios EstoqueMax" loading="lazy"></div>
             </div>
-            <div class="hero-ph-card">
-              <div class="hero-ph-row">
-                <span class="hero-ph-cn">Uno · Mariana</span>
-                <span class="hero-ph-badge badge-yellow">Andamento</span>
-              </div>
-              <div class="hero-ph-row" style="margin-top:2px;">
-                <span class="hero-ph-info">Freios dianteiros · DEF-5678</span>
-                <span class="hero-ph-val val-orange">R$540</span>
-              </div>
-            </div>
-            <div class="hero-ph-card">
-              <div class="hero-ph-row">
-                <span class="hero-ph-cn">Gol · Pedro</span>
-                <span class="hero-ph-badge badge-purple">Aguardando</span>
-              </div>
-              <div class="hero-ph-row" style="margin-top:2px;">
-                <span class="hero-ph-info">Revisão geral · GHI-9012</span>
-                <span class="hero-ph-val val-purple">R$780</span>
-              </div>
+            <div class="estoque-dots" id="heroEstoqueDots"></div>
+
+            <div class="app-splash-overlay" id="splashB">
+              <img src="assets/images/EstoqueMax/logo-estoquemax.png" alt="EstoqueMax" class="app-splash-logo">
             </div>
           </div>
         </div>
