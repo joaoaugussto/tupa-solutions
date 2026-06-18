@@ -1015,16 +1015,14 @@ footer{border-top:1px solid rgba(212,175,55,0.08);padding:2.5rem 4rem;display:fl
 }
 
 /* ── SEÇÃO DE APPS (services.html) ── */
-.apps-section {
-  padding: 4rem 3rem;
-  overflow: hidden;
-}
+.apps-section { overflow: hidden; }
 
 .apps-header {
   text-align: center;
-  margin-bottom: 3rem;
+  padding: 4rem 2rem 2.5rem;
+  position: relative;
+  z-index: 2;
 }
-
 .apps-eyebrow {
   font-family: 'Cinzel', serif;
   font-size: 0.7rem;
@@ -1033,63 +1031,178 @@ footer{border-top:1px solid rgba(212,175,55,0.08);padding:2.5rem 4rem;display:fl
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
-
 .apps-title {
   font-family: 'Cinzel', serif;
   font-size: clamp(1.6rem, 3vw, 2.25rem);
   font-weight: 700;
   color: #F7F5F0;
+  margin-bottom: 0.5rem;
 }
-
 .apps-title span { color: #D4AF37; }
+.apps-sub { font-size: 0.9rem; color: rgba(247, 245, 240, 0.5); }
 
-.apps-sub {
-  font-size: 0.9rem;
-  color: rgba(247, 245, 240, 0.5);
+/* BLOCO DE APP */
+.app-block {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.apps-section .dual-phone-stage {
-  margin: 0 auto 3rem;
+.app-bg-texture {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 0;
 }
 
-.apps-info-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 900px;
+.app-ink {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.ink-mechup  { background: rgba(109, 40, 217, 0.85); }
+.ink-estoque { background: rgba(194, 65, 12, 0.85); }
+.app-block:hover .app-ink { clip-path: inset(0 0% 0 0); }
+
+.app-idle-hint {
+  position: absolute;
+  z-index: 2;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.app-block:hover .app-idle-hint { opacity: 0; }
+.idle-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: rgba(247, 245, 240, 0.09);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.idle-tag {
+  font-size: 0.7rem;
+  color: rgba(247, 245, 240, 0.22);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.app-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 2.5rem 5rem;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
-.app-info-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 2rem;
+.app-text {
+  flex: 0 1 520px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: none;
 }
+.app-text.reveal {
+  animation: appTextIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.45s;
+}
+.app-text.hide { animation: appTextOut 0.2s ease forwards; }
+@keyframes appTextIn { 0% { opacity: 0; transform: translateY(14px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes appTextOut { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(14px); } }
 
 .app-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.875rem; }
-.app-logo-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-.app-logo-mechup { background: rgba(124, 58, 237, 0.3); color: #a78bfa; }
-.app-logo-estoque { background: rgba(199, 91, 18, 0.3); color: #fb923c; }
+.app-logo-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #fff;
+}
+.app-logo-mechup  { background: rgba(124, 58, 237, 0.3); color: #a78bfa; }
+.app-logo-estoque { background: rgba(199, 91, 18, 0.3);  color: #fb923c; }
+.app-name { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 700; color: #fff; }
 .app-tag-pill {
   display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
   text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px;
   margin-bottom: 0.875rem; color: #fff; border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.1);
 }
+.app-desc {
+  font-size: 1.1rem; color: rgba(255, 255, 255, 0.85); line-height: 1.75;
+  max-width: 480px; margin-bottom: 1.25rem;
+}
 .app-features { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 1.5rem; padding: 0; }
-.app-features li { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: rgba(247, 245, 240, 0.7); }
+.app-features li { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; color: rgba(255, 255, 255, 0.8); }
 .feat-check {
-  width: 17px; height: 17px; border-radius: 50%; background: rgba(255, 255, 255, 0.12);
+  width: 17px; height: 17px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 9px; color: #fff;
 }
 .app-cta {
-  display: inline-flex; align-items: center; gap: 6px; padding: 0.6rem 1.5rem;
-  border-radius: 8px; font-size: 0.875rem; font-weight: 700; text-decoration: none; color: #fff;
+  display: inline-flex; align-items: center; gap: 6px; background: #fff;
+  padding: 0.6rem 1.5rem; border-radius: 8px; font-size: 0.875rem; font-weight: 700;
+  text-decoration: none; transition: opacity 0.2s, transform 0.2s;
 }
-.app-cta-mechup { background: #7c3aed; }
-.app-cta-estoque { background: #C75B12; }
+.app-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+.app-cta-mechup  { color: #6d28d9; }
+.app-cta-estoque { color: #c2410c; }
 
-@media (max-width: 900px) {
-  .apps-info-row { grid-template-columns: 1fr; }
+/* CELULAR */
+.app-phone-side {
+  width: 240px; flex-shrink: 0;
+  display: flex; justify-content: flex-start; align-items: center;
+  padding-left: 1rem;
+}
+.app-phone-mover { transform: translateX(-600px); opacity: 0; }
+.app-phone-mover.go { animation: phoneSlideIn 2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes phoneSlideIn {
+  0%   { transform: translateX(-600px); opacity: 0; }
+  5%   { opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.app-phone {
+  width: 240px; height: 480px;
+  border-radius: 38px;
+  background: #0f0f14;
+  overflow: hidden;
+  position: relative;
+  transform: perspective(900px) rotateX(14deg) rotate(6deg);
+  box-shadow: 8px 16px 40px rgba(0, 0, 0, 0.5), 2px 4px 12px rgba(0, 0, 0, 0.3);
+}
+.phone-mechup  { border: 1.5px solid rgba(124, 58, 237, 0.35); }
+.phone-estoque { border: 1.5px solid rgba(199, 91, 18, 0.35); }
+
+.phone-topbar { height: 4px; border-radius: 36px 36px 0 0; }
+.phone-topbar-mechup  { background: #7c3aed; }
+.phone-topbar-estoque { background: #C75B12; }
+
+.phone-glare {
+  position: absolute; top: 0; left: 0; right: 0; height: 36%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.045) 0%, transparent 100%);
+  border-radius: 36px 36px 0 0; pointer-events: none; z-index: 10;
+}
+.phone-btn-r  { position: absolute; width: 4px; height: 80px; right: 0;  top: 125px; background: #1c1c28; border-radius: 0 2px 2px 0; z-index: 10; }
+.phone-btn-v1 { position: absolute; width: 4px; height: 52px; left: 0; top: 108px; background: #1c1c28; border-radius: 2px 0 0 2px; z-index: 10; }
+.phone-btn-v2 { position: absolute; width: 4px; height: 52px; left: 0; top: 172px; background: #1c1c28; border-radius: 2px 0 0 2px; z-index: 10; }
+.phone-notch  { width: 100px; height: 26px; background: #000; border-radius: 0 0 18px 18px; margin: 0 auto; position: relative; z-index: 10; }
+
+.apps-divider { height: 1px; background: rgba(255, 255, 255, 0.06); position: relative; z-index: 2; }
+
+@media (max-width: 768px) {
+  .app-content { flex-direction: column; padding: 2rem 1.5rem; gap: 1.5rem; }
+  .app-phone-side { width: 100%; order: -1; justify-content: center; padding-left: 0; }
+  .app-block { min-height: auto; }
+  .idle-name { font-size: 1.5rem; }
+  .apps-header { padding: 2.5rem 1.5rem 1.5rem; }
 }

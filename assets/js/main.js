@@ -193,77 +193,85 @@ if (document.getElementById('sliderWrap')) {
 })();
 
 (function () {
+  const hoverState = { mechup: false, estoque: false };
+
+  function appEnter(id) {
+    if (hoverState[id]) return;
+    hoverState[id] = true;
+
+    const phone = document.getElementById('phone-' + id);
+    if (phone) {
+      phone.classList.remove('go');
+      void phone.offsetWidth;
+      phone.classList.add('go');
+    }
+
+    const text = document.getElementById('app-text-' + id);
+    if (text) {
+      text.classList.remove('reveal', 'hide');
+      void text.offsetWidth;
+      text.classList.add('reveal');
+    }
+  }
+
+  function appLeave(id) {
+    hoverState[id] = false;
+
+    const phone = document.getElementById('phone-' + id);
+    if (phone) {
+      phone.classList.remove('go');
+      phone.style.cssText = 'transform:translateX(-600px);opacity:0;';
+      setTimeout(function () { phone.style.cssText = ''; }, 50);
+    }
+
+    const text = document.getElementById('app-text-' + id);
+    if (text) {
+      text.classList.remove('reveal');
+      text.classList.add('hide');
+      setTimeout(function () { text.classList.remove('hide'); }, 250);
+    }
+  }
+
+  window.appEnter = appEnter;
+  window.appLeave = appLeave;
+})();
+
+(function () {
   const mechupTrack = document.getElementById('mechupTrack');
   const mechupDots = document.getElementById('mechupDots');
   const estoqueTrack = document.getElementById('estoqueTrack');
   const estoqueDots = document.getElementById('estoqueDots');
-  const slotA = document.getElementById('slotA');
-  const slotB = document.getElementById('slotB');
 
-  if (!mechupTrack || !estoqueTrack || !slotA || !slotB) return;
+  if (!mechupTrack && !estoqueTrack) return;
 
   const SLIDE_TIME = 2800;
 
-  const mechupTotal = mechupTrack.children.length;
-  const estoqueTotal = estoqueTrack.children.length;
+  function setupCarousel(track, dots, dotClass) {
+    if (!track || !dots) return null;
+    const total = track.children.length;
+    let idx = 0;
 
-  function buildDots(container, total) {
-    container.innerHTML = '';
+    dots.innerHTML = '';
     for (let i = 0; i < total; i++) {
       const d = document.createElement('div');
-      d.className = (container === mechupDots ? 'mechup-dot' : 'estoque-dot') + (i === 0 ? ' active' : '');
-      container.appendChild(d);
+      d.className = dotClass + (i === 0 ? ' active' : '');
+      dots.appendChild(d);
     }
-  }
-  buildDots(mechupDots, mechupTotal);
-  buildDots(estoqueDots, estoqueTotal);
 
-  const state = {
-    mechup: { idx: 0, total: mechupTotal, track: mechupTrack, dots: mechupDots, dotClass: 'mechup-dot' },
-    estoque: { idx: 0, total: estoqueTotal, track: estoqueTrack, dots: estoqueDots, dotClass: 'estoque-dot' }
-  };
-
-  function setSlide(appKey) {
-    const s = state[appKey];
-    s.track.style.transform = 'translateX(-' + (s.idx * 100) + '%)';
-    s.dots.querySelectorAll('.' + s.dotClass).forEach(function (d, i) {
-      d.classList.toggle('active', i === s.idx);
-    });
-  }
-
-  function swapPositions() {
-    const aIsFront = slotA.classList.contains('slot-front');
-    if (aIsFront) {
-      slotA.classList.remove('slot-front');
-      slotA.classList.add('slot-back');
-      slotB.classList.remove('slot-back');
-      slotB.classList.add('slot-front');
-    } else {
-      slotA.classList.remove('slot-back');
-      slotA.classList.add('slot-front');
-      slotB.classList.remove('slot-front');
-      slotB.classList.add('slot-back');
+    function next() {
+      idx = (idx + 1) % total;
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.querySelectorAll('.' + dotClass).forEach(function (d, i) {
+        d.classList.toggle('active', i === idx);
+      });
     }
+
+    setInterval(next, SLIDE_TIME);
+    return { next };
   }
 
-  function runCycle(appKey) {
-    const s = state[appKey];
-    s.idx = (s.idx + 1) % s.total;
-    setSlide(appKey);
-    if (s.idx === 0) {
-      swapPositions();
-    }
-    scheduleNext(appKey);
-  }
-
-  function scheduleNext(appKey) {
-    setTimeout(function () {
-      runCycle(appKey);
-    }, SLIDE_TIME);
-  }
-
-  setTimeout(function () { scheduleNext('mechup'); }, SLIDE_TIME);
-  setTimeout(function () { scheduleNext('estoque'); }, SLIDE_TIME + 400);
+  setupCarousel(mechupTrack, mechupDots, 'mechup-dot');
+  setupCarousel(estoqueTrack, estoqueDots, 'estoque-dot');
 })();
 
 (function () {
