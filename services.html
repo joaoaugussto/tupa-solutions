@@ -24,59 +24,97 @@
   <a href="https://wa.me/5517996433083" target="_blank" class="nav-cta">Contato</a>
 </nav>
 
-<section class="sv-hero">
-  <div class="sv-hero-inner">
-    <div class="sv-badge">Nossos Apps</div>
-    <h1>Escolha a solução <span class="sv-accent">certa</span><br>para o seu <span class="sv-gold">negócio</span></h1>
-    <p class="sv-sub">Cada app foi desenvolvido para resolver um problema real. Escolha o seu e comece a usar hoje.</p>
+<section class="apps-section" id="apps">
+  <div class="apps-header">
+    <div class="apps-eyebrow">Nossos Apps</div>
+    <h2 class="apps-title">Tecnologia para <span>quem trabalha</span></h2>
+    <p class="apps-sub">Conheça as soluções que já transformam negócios reais</p>
   </div>
-</section>
 
-<section class="section" style="padding-top:1rem">
-  <div class="app-grid">
+  <div class="dual-phone-stage" id="dualPhoneStage">
 
-    <div class="app-card-full">
-      <div class="app-avail-badge">● Disponível</div>
-      <img class="app-logo" src="assets/images/logo-mechup.png" alt="MechUp">
-      <div class="app-tag app-tag--purple">Gestão de Oficinas</div>
-      <h2 class="app-name">MechUp</h2>
-      <p class="app-desc">Sistema completo para mecânicas e oficinas. Controle OS, clientes, veículos e financeiro em tempo real.</p>
-      <ul class="app-feats">
-        <li>Ordens de serviço completas</li>
-        <li>Controle financeiro com caixa</li>
-        <li>Cadastro de clientes e veículos</li>
-        <li>Dashboard com visão do dia</li>
-      </ul>
-      <div class="app-btns">
-        <button id="btn-mechup" class="btn-app-primary btn-app-primary--purple">Quero o MechUp</button>
-        <button class="btn-app-secondary" onclick="openModal(0)">Ver detalhes</button>
+    <div class="phone-slot slot-back" id="slotA" data-app="mechup">
+      <div class="hero-phone phone-mechup-hero" id="frameA" style="width:240px;height:480px;border-radius:38px;">
+        <div class="hero-phone-topbar topbar-purple"></div>
+        <div class="hero-phone-glare"></div>
+        <div class="hero-phone-btn-r"></div>
+        <div class="hero-phone-btn-v1"></div>
+        <div class="hero-phone-btn-v2"></div>
+        <div class="hero-phone-notch notch-lg"></div>
+
+        <div class="mechup-carousel-viewport">
+          <div class="mechup-carousel-track" id="mechupTrack">
+            <div class="mechup-slide"><img src="assets/images/MechUp/mechup-dashboard.jpeg" alt="Dashboard MechUp" loading="lazy"></div>
+            <div class="mechup-slide"><img src="assets/images/MechUp/mechup-ordens.jpeg" alt="Ordens MechUp" loading="lazy"></div>
+            <div class="mechup-slide"><img src="assets/images/MechUp/mechup-clientes.jpeg" alt="Clientes MechUp" loading="lazy"></div>
+            <div class="mechup-slide"><img src="assets/images/MechUp/mechup-carros.jpeg" alt="Carros MechUp" loading="lazy"></div>
+            <div class="mechup-slide"><img src="assets/images/MechUp/mechup-estoque.jpeg" alt="Estoque MechUp" loading="lazy"></div>
+            <div class="mechup-slide"><img src="assets/images/MechUp/mechup-financeiro.jpeg" alt="Financeiro MechUp" loading="lazy"></div>
+            <div class="mechup-slide"><img src="assets/images/MechUp/mechup-adiantamentos.jpeg" alt="Adiantamentos MechUp" loading="lazy"></div>
+            <div class="mechup-slide"><img src="assets/images/MechUp/mechup-lembretes.jpeg" alt="Lembretes MechUp" loading="lazy"></div>
+          </div>
+          <div class="mechup-dots" id="mechupDots"></div>
+        </div>
       </div>
     </div>
 
-    <div class="app-card-full">
-      <div class="app-avail-badge">● Disponível</div>
-      <img class="app-logo" src="assets/images/logo-scissors.png" alt="Scissors">
-      <div class="app-tag app-tag--gold">Gestão de Barbearias</div>
-      <h2 class="app-name">Scissors</h2>
-      <p class="app-desc">Agendamento e gestão para barbearias premium. Clientes agendam online, você controla tudo pelo celular.</p>
-      <ul class="app-feats">
-        <li>Agendamento rápido e organizado</li>
-        <li>Controle de barbeiros e horários</li>
-        <li>Histórico completo de clientes</li>
-        <li>Gestão financeira do negócio</li>
-      </ul>
-      <div class="app-btns">
-        <button id="btn-scissors" class="btn-app-primary btn-app-primary--gold">Quero o Scissors</button>
-        <button class="btn-app-secondary" onclick="openModal(1)">Ver detalhes</button>
+    <div class="phone-slot slot-front" id="slotB" data-app="estoque">
+      <div class="hero-phone phone-tupa" id="frameB" style="width:240px;height:480px;border-radius:38px;">
+        <div class="hero-phone-topbar" style="background:#C75B12;"></div>
+        <div class="hero-phone-glare"></div>
+        <div class="hero-phone-notch notch-lg"></div>
+
+        <div class="estoque-carousel-viewport">
+          <div class="estoque-carousel-track" id="estoqueTrack">
+            <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-dashboard.jpeg" alt="Dashboard EstoqueMax" loading="lazy"></div>
+            <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-produtos.jpeg" alt="Produtos EstoqueMax" loading="lazy"></div>
+            <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-movimentacoes.jpeg" alt="Movimentacoes EstoqueMax" loading="lazy"></div>
+            <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-historico.jpeg" alt="Historico EstoqueMax" loading="lazy"></div>
+            <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-depositos.jpeg" alt="Depositos EstoqueMax" loading="lazy"></div>
+            <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-financeiro.jpeg" alt="Financeiro EstoqueMax" loading="lazy"></div>
+            <div class="estoque-slide"><img src="assets/images/EstoqueMax/estoquemax-relatorios.jpeg" alt="Relatorios EstoqueMax" loading="lazy"></div>
+          </div>
+          <div class="estoque-dots" id="estoqueDots"></div>
+        </div>
       </div>
     </div>
 
   </div>
 
-  <div class="coming-banner">
-    <p><strong>Mais apps chegando em breve</strong> — Estamos desenvolvendo soluções para novos setores. Deixe seu contato e avisamos quando lançar.</p>
-    <a href="#" class="btn-cta">Quero ser avisado →</a>
+  <div class="apps-info-row">
+    <div class="app-info-card">
+      <div class="app-logo-row">
+        <div class="app-logo-icon app-logo-mechup">&#9881;</div>
+        <div class="app-name">MechUp</div>
+      </div>
+      <div class="app-tag-pill">Gestão de Oficinas Mecânicas</div>
+      <p class="app-desc">OS, clientes, veículos, estoque e financeiro num só lugar. Sem papel, sem confusão — feito pra mecânico de verdade usar no dia a dia.</p>
+      <ul class="app-features">
+        <li><span class="feat-check">&#10003;</span>Ordens de serviço com peças, mão de obra e histórico</li>
+        <li><span class="feat-check">&#10003;</span>Financeiro com adiantamentos e pagamentos parciais</li>
+        <li><span class="feat-check">&#10003;</span>Estoque com código de barras e alertas de mínimo</li>
+        <li><span class="feat-check">&#10003;</span>Web e mobile — disponível no Google Play</li>
+      </ul>
+      <a href="https://wa.me/5517996433083" class="app-cta app-cta-mechup" target="_blank" rel="noopener">Quero o MechUp &#8594;</a>
+    </div>
+
+    <div class="app-info-card">
+      <div class="app-logo-row">
+        <div class="app-logo-icon app-logo-estoque">&#9632;</div>
+        <div class="app-name">EstoqueMax</div>
+      </div>
+      <div class="app-tag-pill">Gestão de Estoque para PMEs</div>
+      <p class="app-desc">Do pequeno comércio ao grande distribuidor. Controle produtos, entradas, saídas e pedidos com código de barras — sem planilha perdida e sem susto no estoque.</p>
+      <ul class="app-features">
+        <li><span class="feat-check">&#10003;</span>Controle de produtos com código de barras</li>
+        <li><span class="feat-check">&#10003;</span>Pedidos de compra e venda automatizados</li>
+        <li><span class="feat-check">&#10003;</span>Alertas de estoque mínimo em tempo real</li>
+        <li><span class="feat-check">&#10003;</span>Relatórios exportáveis em PDF e Excel</li>
+      </ul>
+      <a href="https://wa.me/5517996433083" class="app-cta app-cta-estoque" target="_blank" rel="noopener">Quero o EstoqueMax &#8594;</a>
+    </div>
   </div>
+
 </section>
 
 <footer>
@@ -94,20 +132,5 @@
 </div>
 
 <script src="assets/js/main.js"></script>
-<script>
-document.getElementById('btn-mechup').onclick = () => {
-  const a = document.createElement('a');
-  a.href = 'assets/apk/MechUp.apk';
-  a.download = 'MechUp.apk';
-  a.click();
-};
-
-document.getElementById('btn-scissors').onclick = () => {
-  const a = document.createElement('a');
-  a.href = 'assets/apk/Scissors.apk';
-  a.download = 'Scissors.apk';
-  a.click();
-};
-</script>
 </body>
 </html>

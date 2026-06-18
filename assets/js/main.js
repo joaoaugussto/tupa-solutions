@@ -193,6 +193,80 @@ if (document.getElementById('sliderWrap')) {
 })();
 
 (function () {
+  const mechupTrack = document.getElementById('mechupTrack');
+  const mechupDots = document.getElementById('mechupDots');
+  const estoqueTrack = document.getElementById('estoqueTrack');
+  const estoqueDots = document.getElementById('estoqueDots');
+  const slotA = document.getElementById('slotA');
+  const slotB = document.getElementById('slotB');
+
+  if (!mechupTrack || !estoqueTrack || !slotA || !slotB) return;
+
+  const SLIDE_TIME = 2800;
+
+  const mechupTotal = mechupTrack.children.length;
+  const estoqueTotal = estoqueTrack.children.length;
+
+  function buildDots(container, total) {
+    container.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('div');
+      d.className = (container === mechupDots ? 'mechup-dot' : 'estoque-dot') + (i === 0 ? ' active' : '');
+      container.appendChild(d);
+    }
+  }
+  buildDots(mechupDots, mechupTotal);
+  buildDots(estoqueDots, estoqueTotal);
+
+  const state = {
+    mechup: { idx: 0, total: mechupTotal, track: mechupTrack, dots: mechupDots, dotClass: 'mechup-dot' },
+    estoque: { idx: 0, total: estoqueTotal, track: estoqueTrack, dots: estoqueDots, dotClass: 'estoque-dot' }
+  };
+
+  function setSlide(appKey) {
+    const s = state[appKey];
+    s.track.style.transform = 'translateX(-' + (s.idx * 100) + '%)';
+    s.dots.querySelectorAll('.' + s.dotClass).forEach(function (d, i) {
+      d.classList.toggle('active', i === s.idx);
+    });
+  }
+
+  function swapPositions() {
+    const aIsFront = slotA.classList.contains('slot-front');
+    if (aIsFront) {
+      slotA.classList.remove('slot-front');
+      slotA.classList.add('slot-back');
+      slotB.classList.remove('slot-back');
+      slotB.classList.add('slot-front');
+    } else {
+      slotA.classList.remove('slot-back');
+      slotA.classList.add('slot-front');
+      slotB.classList.remove('slot-front');
+      slotB.classList.add('slot-back');
+    }
+  }
+
+  function runCycle(appKey) {
+    const s = state[appKey];
+    s.idx = (s.idx + 1) % s.total;
+    setSlide(appKey);
+    if (s.idx === 0) {
+      swapPositions();
+    }
+    scheduleNext(appKey);
+  }
+
+  function scheduleNext(appKey) {
+    setTimeout(function () {
+      runCycle(appKey);
+    }, SLIDE_TIME);
+  }
+
+  setTimeout(function () { scheduleNext('mechup'); }, SLIDE_TIME);
+  setTimeout(function () { scheduleNext('estoque'); }, SLIDE_TIME + 400);
+})();
+
+(function () {
   const scrollEls = document.querySelectorAll('.scroll-reveal');
 
   if (!scrollEls.length) return;

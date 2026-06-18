@@ -1013,3 +1013,83 @@ footer{border-top:1px solid rgba(212,175,55,0.08);padding:2.5rem 4rem;display:fl
     padding: 3rem 1.5rem;
   }
 }
+
+/* ── SEÇÃO DE APPS (services.html) ── */
+.apps-section {
+  padding: 4rem 3rem;
+  overflow: hidden;
+}
+
+.apps-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.apps-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #D4AF37;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.apps-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #F7F5F0;
+}
+
+.apps-title span { color: #D4AF37; }
+
+.apps-sub {
+  font-size: 0.9rem;
+  color: rgba(247, 245, 240, 0.5);
+}
+
+.apps-section .dual-phone-stage {
+  margin: 0 auto 3rem;
+}
+
+.apps-info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.app-info-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.app-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 0.875rem; }
+.app-logo-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.app-logo-mechup { background: rgba(124, 58, 237, 0.3); color: #a78bfa; }
+.app-logo-estoque { background: rgba(199, 91, 18, 0.3); color: #fb923c; }
+.app-tag-pill {
+  display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px;
+  margin-bottom: 0.875rem; color: #fff; border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+.app-features { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 1.5rem; padding: 0; }
+.app-features li { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: rgba(247, 245, 240, 0.7); }
+.feat-check {
+  width: 17px; height: 17px; border-radius: 50%; background: rgba(255, 255, 255, 0.12);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 9px; color: #fff;
+}
+.app-cta {
+  display: inline-flex; align-items: center; gap: 6px; padding: 0.6rem 1.5rem;
+  border-radius: 8px; font-size: 0.875rem; font-weight: 700; text-decoration: none; color: #fff;
+}
+.app-cta-mechup { background: #7c3aed; }
+.app-cta-estoque { background: #C75B12; }
+
+@media (max-width: 900px) {
+  .apps-info-row { grid-template-columns: 1fr; }
+}
