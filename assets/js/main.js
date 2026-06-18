@@ -259,13 +259,10 @@ if (document.getElementById('sliderWrap')) {
   const estoqueDots = document.getElementById('heroEstoqueDots');
   const slotA = document.getElementById('slotA');
   const slotB = document.getElementById('slotB');
-  const splashA = document.getElementById('splashA');
-  const splashB = document.getElementById('splashB');
 
   if (!mechupTrack || !estoqueTrack || !slotA || !slotB) return;
 
   const SLIDE_TIME = 2800;
-  const SPLASH_TIME = 1600;
 
   const mechupTotal = mechupTrack.children.length;
   const estoqueTotal = estoqueTrack.children.length;
@@ -282,8 +279,8 @@ if (document.getElementById('sliderWrap')) {
   buildDots(estoqueDots, estoqueTotal, 'estoque-dot');
 
   const state = {
-    mechup: { idx: 0, total: mechupTotal, track: mechupTrack, dots: mechupDots, dotClass: 'mechup-dot', splash: splashA },
-    estoque: { idx: 0, total: estoqueTotal, track: estoqueTrack, dots: estoqueDots, dotClass: 'estoque-dot', splash: splashB }
+    mechup: { idx: 0, total: mechupTotal, track: mechupTrack, dots: mechupDots, dotClass: 'mechup-dot' },
+    estoque: { idx: 0, total: estoqueTotal, track: estoqueTrack, dots: estoqueDots, dotClass: 'estoque-dot' }
   };
 
   function setSlide(appKey) {
@@ -291,17 +288,6 @@ if (document.getElementById('sliderWrap')) {
     s.track.style.transform = 'translateX(-' + (s.idx * 100) + '%)';
     s.dots.querySelectorAll('.' + s.dotClass).forEach(function (d, i) {
       d.classList.toggle('active', i === s.idx);
-    });
-  }
-
-  function showSplash(appKey) {
-    return new Promise(function (resolve) {
-      const s = state[appKey];
-      s.splash.classList.add('show');
-      setTimeout(function () {
-        s.splash.classList.remove('show');
-        resolve();
-      }, SPLASH_TIME);
     });
   }
 
@@ -326,13 +312,10 @@ if (document.getElementById('sliderWrap')) {
     setSlide(appKey);
 
     if (s.idx === 0) {
-      showSplash(appKey).then(function () {
-        swapPositions();
-        scheduleNext(appKey);
-      });
-    } else {
-      scheduleNext(appKey);
+      swapPositions();
     }
+
+    scheduleNext(appKey);
   }
 
   function scheduleNext(appKey) {
