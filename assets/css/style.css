@@ -257,7 +257,9 @@ footer{border-top:1px solid rgba(212,175,55,0.08);padding:2.5rem 4rem;display:fl
    Responsive — Mobile (max-width: 768px)
    ============================================================ */
 @media (max-width:768px){
-
+  
+  .app-block.in-view .app-ink { clip-path: inset(0 0% 0 0); }
+  .app-block.in-view .app-idle-hint { opacity: 0; }
   /* Nav */
   nav{padding:1rem 1.5rem}
   .nav-links{display:none}
